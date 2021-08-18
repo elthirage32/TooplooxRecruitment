@@ -1,0 +1,13 @@
+@import "../Colors";
+
+.input {
+  display: block;
+  width: 100%;
+  outline-color: $input-outline;
+  padding: 0 10px 0 10px;
+  border: none;
+  border-radius: 15px;
+  height: 3em;
+  background-color: $input-background;
+}
+
