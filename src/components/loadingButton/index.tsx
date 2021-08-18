@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Loader from "~components/loader";
 
 interface ILoadingButton {
   handleClick: () => void;
@@ -13,14 +14,13 @@ const LoadingButton: FC<ILoadingButton> = ({
 }) => {
   return (
     <button
-      data-testid="btn-loading"
       onClick={handleClick}
       disabled={isLoading}
       className={`btn ${isLoading && "btn--disabled"}`}
     >
       <span>
         {!isLoading && label}
-        {isLoading && <span data-testid="btn-loading__loading"></span>}
+        {isLoading && <Loader />}
       </span>
     </button>
   );

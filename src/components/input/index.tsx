@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 interface IInput {
   value: string;
@@ -15,13 +17,16 @@ const Input: FC<IInput> = ({ value, handleChange, placeholder, onEnter }) => {
   };
 
   return (
-    <input
-      value={value}
-      onKeyDown={handleEnterClick}
-      onChange={handleChange}
-      className="input"
-      placeholder={placeholder}
-    />
+    <span className="input-container">
+      <FontAwesomeIcon icon={faSearch} />
+      <input
+        value={value}
+        onKeyDown={handleEnterClick}
+        onChange={handleChange}
+        className="input"
+        placeholder={placeholder}
+      />
+    </span>
   );
 };
 

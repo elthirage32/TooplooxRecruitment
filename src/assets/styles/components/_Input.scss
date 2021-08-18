@@ -1,12 +1,22 @@
 @import "../Colors";
 
-.input {
-  display: block;
+.input-container {
+  position: relative;
   width: 100%;
+  svg {
+    bottom: 1em;
+    left: 0.7em;
+    position: absolute;
+  }
+}
+
+.input {
+  width: 100%;
+  text-indent: 2em;
   outline-color: $input-outline;
   padding: 0 10px 0 10px;
   border: none;
-  border-radius: 15px;
+  border-radius: 25px;
   height: 3em;
   background-color: $input-background;
 }
