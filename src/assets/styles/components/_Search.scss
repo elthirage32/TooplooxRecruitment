@@ -3,7 +3,7 @@
 html * {
   font-family: Arial, serif;
   font-size: 1.2rem;
-  line-height: 17px;
+  line-height: 1.4em;
 
   @media screen and (max-width: 1200px) {
     font-size: 2rem;
@@ -41,8 +41,16 @@ html * {
 
 .search-body__results {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   margin-top: 2em;
+}
+
+.search-results__text {
+  display: flex;
+  font-weight: bold;
+  padding: 2em;
+  text-align: center;
 }
 
 .search-results__item {

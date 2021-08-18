@@ -11,7 +11,7 @@ const Search: FC = ({}) => {
   return (
     <div className="search-container">
       <SearchHeader isFetching={isFetching} setSearch={setSearch} />
-      <SearchResults usersList={data} />
+      <SearchResults search={search} usersList={data} />
     </div>
   );
 };

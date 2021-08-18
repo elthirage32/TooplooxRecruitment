@@ -4,10 +4,8 @@
     "baseUrl": "./",
     "paths": {
       "~components/*": ["src/components/*"],
-      "~containers/*": ["src/containers/*"],
-      "~core/*": ["src/core/*"],
-      "~styles/*": ["src/styles/*"],
-      "~assets/*": ["src/assets/*"]
+      "~assets/*": ["src/assets/*"],
+      "~api/*": ["src/api/*"],
     },
     "rootDirs": ["src"],
     "outDir": "dist/",

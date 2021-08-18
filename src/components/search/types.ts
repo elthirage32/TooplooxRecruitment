@@ -23,5 +23,5 @@ export interface UserModel {
 export interface UserSearchResponse {
   incomplete_results: boolean;
   items: Array<UserModel>;
-  totalCount: number;
+  total_count: number;
 }
