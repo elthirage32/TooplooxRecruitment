@@ -1,19 +1,21 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, Dispatch, SetStateAction } from "react";
 import Input from "~components/input";
 import LoadingButton from "~components/loadingButton";
 
-interface ISearchHeader {}
+interface ISearchHeader {
+  setSearch: Dispatch<SetStateAction<string>>;
+  isFetching: boolean;
+}
 
-const SearchHeader: FC<ISearchHeader> = ({}) => {
+const SearchHeader: FC<ISearchHeader> = ({ setSearch, isFetching }) => {
   const [inputValue, setInputValue] = useState("");
-  const [isFetching, setIsFetching] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
   const handleSearchSubmit = () => {
-    console.log(inputValue);
+    setSearch(inputValue);
   };
 
   return (
