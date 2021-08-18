@@ -1,5 +1,9 @@
 import { useQuery } from "react-query";
-import { getListOfUsers } from "../../api/services/UserService";
+import {
+  getListOfUsers,
+  getUserDetails,
+  getUserRepos,
+} from "~api/services/UserService";
 
 export const useUsersList = (query: string, page: number) => {
   return useQuery(
@@ -10,4 +14,18 @@ export const useUsersList = (query: string, page: number) => {
     },
     { enabled: !!query }
   );
+};
+
+export const useUserDetails = (login: string) => {
+  return useQuery("userDetails", async () => {
+    const { data } = await getUserDetails(login);
+    return data;
+  });
+};
+
+export const useUserRepos = (login: string) => {
+  return useQuery("userRepos", async () => {
+    const { data } = await getUserRepos(login);
+    return data;
+  });
 };

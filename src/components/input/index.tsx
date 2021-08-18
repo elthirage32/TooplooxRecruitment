@@ -11,9 +11,7 @@ interface IInput {
 
 const Input: FC<IInput> = ({ value, handleChange, placeholder, onEnter }) => {
   const handleEnterClick = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      onEnter();
-    }
+    if (e.key === "Enter") onEnter();
   };
 
   return (

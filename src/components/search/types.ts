@@ -25,3 +25,10 @@ export interface UserSearchResponse {
   items: Array<UserModel>;
   total_count: number;
 }
+
+export interface RepoModel {
+  id: number;
+  name: string;
+  stargazers_count: number;
+  html_url: string;
+}
