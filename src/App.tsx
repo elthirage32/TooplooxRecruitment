@@ -7,7 +7,9 @@ const App: FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Search />
+      <div className="app-container">
+        <Search />
+      </div>
     </QueryClientProvider>
   );
 };

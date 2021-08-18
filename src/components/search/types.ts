@@ -1,4 +1,4 @@
-interface UserModel {
+export interface UserModel {
   avatar_url: string;
   events_url: string;
   followers_url: string;
