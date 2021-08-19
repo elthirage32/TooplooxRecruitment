@@ -10,16 +10,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TopRepositories from "./TopRepositories";
 import { useUserDetails, useUserRepos } from "~components/search/queries";
 import Loader from "~components/loader";
-import { RepoModel } from "~components/search/types";
 import { getTop5Repos } from "~helpers/Utils";
 
+import { IRepoModel } from "~components/search/types";
 interface IUserDetails {
   setSelectedUserLogin: Dispatch<SetStateAction<string>>;
   userLogin: string;
 }
 
 const UserDetails: FC<IUserDetails> = ({ userLogin, setSelectedUserLogin }) => {
-  const [popularRepos, setPopularRepos] = useState<Array<RepoModel>>([]);
+  const [popularRepos, setPopularRepos] = useState<Array<IRepoModel>>([]);
 
   const { data: userDetails, isFetching: isFetchingDetails } =
     useUserDetails(userLogin);
@@ -41,7 +41,7 @@ const UserDetails: FC<IUserDetails> = ({ userLogin, setSelectedUserLogin }) => {
       />
       <div className="user-info">
         {isFetchingDetails && <Loader size="2x" />}
-        {!isFetchingDetails && (
+        {!isFetchingDetails && userDetails && (
           <>
             <div className="user-info__name">
               <img alt={userDetails.name} src={userDetails.avatar_url} />

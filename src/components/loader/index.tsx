@@ -7,8 +7,8 @@ interface ILoader {
   size?: SizeProp;
 }
 
-const Loader: FC<ILoader> = ({ size }) => {
-  return <FontAwesomeIcon spin size={size} icon={faSpinner} />;
-};
+const Loader: FC<ILoader> = ({ size }) => (
+  <FontAwesomeIcon spin size={size} icon={faSpinner} />
+);
 
 export default Loader;

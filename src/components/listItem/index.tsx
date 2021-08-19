@@ -9,18 +9,16 @@ interface IListItem {
   customIcon?: IconProp;
 }
 
-const ListItem: FC<IListItem> = ({ name, action, customIcon }) => {
-  return (
-    <div className="list__item" onClick={action}>
-      <div>
-        {customIcon && (
-          <FontAwesomeIcon className="custom_icon" icon={customIcon} />
-        )}
-        {name}
-      </div>
-      <FontAwesomeIcon className="icon_primary" icon={faChevronRight} />
+const ListItem: FC<IListItem> = ({ name, action, customIcon }) => (
+  <div className="list__item" onClick={action}>
+    <div>
+      {customIcon && (
+        <FontAwesomeIcon className="custom_icon" icon={customIcon} />
+      )}
+      {name}
     </div>
-  );
-};
+    <FontAwesomeIcon className="icon_primary" icon={faChevronRight} />
+  </div>
+);
 
 export default ListItem;

@@ -1,31 +1,33 @@
-import { useQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import {
   getListOfUsers,
   getUserDetails,
   getUserRepos,
 } from "~api/services/UserService";
+import {
+  IRepoModel,
+  IUserModel,
+  IUserSearchResponse,
+} from "~components/search/types";
 
-export const useUsersList = (query: string, page: number) => {
-  return useQuery(
-    ["usersList", page, query],
-    async () => {
-      const { data } = await getListOfUsers(page, query);
+export const useUsersList = (query: string) =>
+  useInfiniteQuery<IUserSearchResponse>(
+    ["usersList", query],
+    async ({ pageParam }) => {
+      const { data } = await getListOfUsers(pageParam, query);
       return data;
     },
     { enabled: !!query }
   );
-};
 
-export const useUserDetails = (login: string) => {
-  return useQuery("userDetails", async () => {
+export const useUserDetails = (login: string) =>
+  useQuery<IUserModel>("userDetails", async () => {
     const { data } = await getUserDetails(login);
     return data;
   });
-};
 
-export const useUserRepos = (login: string) => {
-  return useQuery("userRepos", async () => {
+export const useUserRepos = (login: string) =>
+  useQuery<Array<IRepoModel>>("userRepos", async () => {
     const { data } = await getUserRepos(login);
     return data;
   });
-};

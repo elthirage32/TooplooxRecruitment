@@ -1,13 +1,13 @@
-import React, { FC, useState, Dispatch, SetStateAction } from "react";
+import React, { FC, useState } from "react";
 import Input from "~components/input";
 import LoadingButton from "~components/loadingButton";
 
 interface ISearchHeader {
-  setSearch: Dispatch<SetStateAction<string>>;
+  handleSetSearch: (searchValue: string) => void;
   isFetching: boolean;
 }
 
-const SearchHeader: FC<ISearchHeader> = ({ setSearch, isFetching }) => {
+const SearchHeader: FC<ISearchHeader> = ({ handleSetSearch, isFetching }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +15,7 @@ const SearchHeader: FC<ISearchHeader> = ({ setSearch, isFetching }) => {
   };
 
   const handleSearchSubmit = () => {
-    setSearch(inputValue);
+    handleSetSearch(inputValue);
   };
 
   return (

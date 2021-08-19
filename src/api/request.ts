@@ -1,7 +1,7 @@
 import axios, { Method } from "axios";
 
-export const request = async (method: Method, url: string) => {
-  return await axios.request({
+export const request = async (method: Method, url: string) =>
+  await axios.request({
     method,
     url,
     baseURL: "https://api.github.com",
@@ -10,4 +10,3 @@ export const request = async (method: Method, url: string) => {
       Accept: "application/vnd.github.v3+json",
     },
   });
-};

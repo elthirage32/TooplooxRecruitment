@@ -3,15 +3,31 @@ import SearchHeader from "./components/SearchHeader";
 import SearchResults from "./components/SearchResults";
 import { useUsersList } from "~components/search/queries";
 
-const Search: FC = ({}) => {
-  const [page, setPage] = useState(1);
+const Search: FC = () => {
+  const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
-  const { data, isFetching } = useUsersList(search, page);
+  const { data, isFetching, fetchNextPage, isFetchingNextPage } =
+    useUsersList(search);
+
+  const handleSetSearch = async (searchValue: string) => {
+    setPage(1);
+    setSearch(searchValue);
+  };
+
+  const handleLoadMore = async () => {
+    await fetchNextPage({ pageParam: page + 1 });
+    setPage(page + 1);
+  };
 
   return (
     <div className="search-container">
-      <SearchHeader isFetching={isFetching} setSearch={setSearch} />
-      {data && <SearchResults search={search} usersList={data} />}
+      <SearchHeader isFetching={isFetching} handleSetSearch={handleSetSearch} />
+      <SearchResults
+        handleLoadMore={handleLoadMore}
+        isFetching={isFetchingNextPage}
+        search={search}
+        usersListResponse={data}
+      />
     </div>
   );
 };

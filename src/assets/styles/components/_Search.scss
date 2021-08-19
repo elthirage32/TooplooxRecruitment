@@ -20,11 +20,16 @@
   width: 100%;
 }
 
+.search-container__body {
+  display: flex;
+  flex-direction: column;
+}
+
 .search-body__results {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2rem;
+  margin: 2rem 0 1rem 0;
 }
 
 .--hidden {
@@ -110,6 +115,10 @@
   flex-direction: column;
   margin-top: 2rem;
   width: 100%;
+
+  * {
+    display: flex;
+  }
 
   .label {
     margin-top: 2em;

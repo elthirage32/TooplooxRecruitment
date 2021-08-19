@@ -2,11 +2,11 @@ import React, { FC } from "react";
 import Loader from "~components/loader";
 import List from "~components/list";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { RepoModel } from "~components/search/types";
 
+import { IRepoModel } from "~components/search/types";
 interface ITopRepositories {
   isFetching: boolean;
-  topRepos: Array<RepoModel>;
+  topRepos: Array<IRepoModel>;
   handleNavigateToRepo: (url: string) => void;
 }
 

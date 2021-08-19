@@ -3,13 +3,23 @@ import pepe from "~assets/images/pepe.png";
 import UserDetails from "~components/search/components/UserDetails";
 import List from "~components/list";
 
-import { UserSearchResponse } from "../types";
+import { InfiniteData } from "react-query";
+import { IUserSearchResponse } from "~components/search/types";
+import { checkIfCanFetchMoreUsers } from "~helpers/Utils";
+import LoadingButton from "~components/loadingButton";
 interface ISearchResults {
-  usersList: UserSearchResponse;
+  usersListResponse?: InfiniteData<IUserSearchResponse>;
   search: string;
+  isFetching: boolean;
+  handleLoadMore: () => void;
 }
 
-const SearchResults: FC<ISearchResults> = ({ usersList, search }) => {
+const SearchResults: FC<ISearchResults> = ({
+  usersListResponse,
+  search,
+  isFetching,
+  handleLoadMore,
+}) => {
   const [selectedUserLogin, setSelectedUserLogin] = useState("");
 
   useEffect(() => {
@@ -28,15 +38,27 @@ const SearchResults: FC<ISearchResults> = ({ usersList, search }) => {
       <div
         className={`search-body__results ${selectedUserLogin && "--hidden"}`}
       >
-        <List
-          items={usersList.items}
-          emptyListComponent={emptyListFallback}
-          trackKeyBy="id"
-          trackArgumentBy="login"
-          trackNameBy="login"
-          action={setSelectedUserLogin}
-        />
+        {usersListResponse &&
+          usersListResponse.pages.map((page, index) => (
+            <List
+              items={page.items}
+              key={index}
+              emptyListComponent={emptyListFallback}
+              trackKeyBy="id"
+              trackArgumentBy="login"
+              trackNameBy="login"
+              action={setSelectedUserLogin}
+            />
+          ))}
       </div>
+      {checkIfCanFetchMoreUsers(usersListResponse!) && (
+        <LoadingButton
+          customClass={`${selectedUserLogin && "--hidden"} --outline`}
+          label="Load more"
+          isLoading={isFetching}
+          handleClick={handleLoadMore}
+        />
+      )}
       {!!selectedUserLogin && (
         <UserDetails
           setSelectedUserLogin={setSelectedUserLogin}
