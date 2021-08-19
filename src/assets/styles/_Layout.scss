@@ -1,0 +1,14 @@
+html * {
+  font-family: Arial, serif;
+  font-size: 1.2rem;
+  line-height: 1.4em;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 2rem;
+  }
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+}

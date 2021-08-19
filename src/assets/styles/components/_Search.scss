@@ -1,20 +1,5 @@
 @import "../Colors";
 
-html * {
-  font-family: Arial, serif;
-  font-size: 1.2rem;
-  line-height: 1.4em;
-
-  @media screen and (max-width: 1200px) {
-    font-size: 2rem;
-  }
-}
-
-.app-container {
-  display: flex;
-  justify-content: center;
-}
-
 .search-container {
   display: flex;
   padding: 30px 15px 30px 15px;
@@ -33,10 +18,6 @@ html * {
   padding-bottom: 2em;
   border-bottom: solid 1px $light;
   width: 100%;
-}
-
-.search-container__body {
-
 }
 
 .search-body__results {
@@ -70,7 +51,7 @@ html * {
   align-items: center;
 
   &:hover {
-    border: 1px solid $input-outline;
+    border: 1px solid $outline;
     cursor: pointer;
   }
 }
@@ -88,8 +69,6 @@ html * {
   display: flex;
   align-items: center;
   flex-direction: column;
-
-
 }
 
 .exit-button {
@@ -144,5 +123,3 @@ html * {
 .muted-text {
   color: $secondary;
 }
-
-
