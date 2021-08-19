@@ -3,7 +3,7 @@ import ListItem from "~components/listItem";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface IList {
-  listOfItems: Array<any>;
+  items: Array<any>;
   emptyListComponent: React.ReactChild;
   customIcon?: IconProp;
   trackKeyBy: string;
@@ -13,7 +13,7 @@ interface IList {
 }
 
 const List: FC<IList> = ({
-  listOfItems,
+  items,
   emptyListComponent,
   trackKeyBy,
   trackNameBy,
@@ -21,18 +21,18 @@ const List: FC<IList> = ({
   action,
   customIcon,
 }) => {
+  if (!items || items.length === 0) return <>{emptyListComponent}</>;
+
   return (
     <>
-      {listOfItems.length > 0
-        ? listOfItems.map((element) => (
-            <ListItem
-              customIcon={customIcon}
-              key={element[trackKeyBy]}
-              name={element[trackNameBy]}
-              action={() => action(element[trackArgumentBy])}
-            />
-          ))
-        : emptyListComponent}
+      {items.map((element) => (
+        <ListItem
+          customIcon={customIcon}
+          key={element[trackKeyBy]}
+          name={element[trackNameBy]}
+          action={() => action(element[trackArgumentBy])}
+        />
+      ))}
     </>
   );
 };

@@ -5,13 +5,13 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { faTimes, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import TopRepositories from "./TopRepositories";
 import { useUserDetails, useUserRepos } from "~components/search/queries";
 import Loader from "~components/loader";
 import { RepoModel } from "~components/search/types";
-import List from "~components/list";
-import { getTop5Repos } from "~api/services/UserService";
+import { getTop5Repos } from "~helpers/Utils";
 
 interface IUserDetails {
   setSelectedUserLogin: Dispatch<SetStateAction<string>>;
@@ -39,8 +39,8 @@ const UserDetails: FC<IUserDetails> = ({ userLogin, setSelectedUserLogin }) => {
         icon={faTimes}
         className="exit-button"
       />
-      <div className="details_container__user-info">
-        {isFetchingDetails && <Loader loaderSize="2x" />}
+      <div className="user-info">
+        {isFetchingDetails && <Loader size="2x" />}
         {!isFetchingDetails && (
           <>
             <div className="user-info__name">
@@ -55,20 +55,11 @@ const UserDetails: FC<IUserDetails> = ({ userLogin, setSelectedUserLogin }) => {
               <span className="muted-text">
                 {userDetails.bio ? userDetails.bio : "This user has no bio"}
               </span>
-              <span className="label">Top repositories</span>
-              {isFetchingRepos ? (
-                <Loader loaderSize="2x" />
-              ) : (
-                <List
-                  customIcon={faExternalLinkAlt}
-                  listOfItems={popularRepos}
-                  emptyListComponent="This user has no public repositories"
-                  trackKeyBy="id"
-                  trackArgumentBy="html_url"
-                  trackNameBy="name"
-                  action={handleNavigateToRepo}
-                />
-              )}
+              <TopRepositories
+                isFetching={isFetchingRepos}
+                topRepos={popularRepos}
+                handleNavigateToRepo={handleNavigateToRepo}
+              />
             </div>
           </>
         )}

@@ -6,6 +6,7 @@
       "~components/*": ["src/components/*"],
       "~assets/*": ["src/assets/*"],
       "~api/*": ["src/api/*"],
+      "~helpers/*": ["src/helpers/*"],
     },
     "rootDirs": ["src"],
     "outDir": "dist/",

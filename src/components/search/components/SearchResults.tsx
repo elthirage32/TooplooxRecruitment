@@ -16,19 +16,21 @@ const SearchResults: FC<ISearchResults> = ({ usersList, search }) => {
     setSelectedUserLogin("");
   }, [search]);
 
+  const emptyListFallback = (
+    <>
+      <span className="search-results__text">{`We couldn't find anything like ${search}`}</span>
+      <img src={pepe} alt="pepe" />
+    </>
+  );
+
   return (
     <div className="search-container__body">
       <div
         className={`search-body__results ${selectedUserLogin && "--hidden"}`}
       >
         <List
-          listOfItems={usersList.items}
-          emptyListComponent={
-            <>
-              <span className="search-results__text">{`We couldn't find anything like ${search}`}</span>
-              <img src={pepe} alt="pepe" />
-            </>
-          }
+          items={usersList.items}
+          emptyListComponent={emptyListFallback}
           trackKeyBy="id"
           trackArgumentBy="login"
           trackNameBy="login"

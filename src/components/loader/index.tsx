@@ -4,16 +4,11 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { SizeProp } from "@fortawesome/fontawesome-svg-core";
 
 interface ILoader {
-  loaderClass?: string;
-  loaderSize?: SizeProp;
+  size?: SizeProp;
 }
 
-const Loader: FC<ILoader> = ({ loaderClass, loaderSize }) => {
-  return (
-    <div className={loaderClass}>
-      <FontAwesomeIcon spin size={loaderSize} icon={faSpinner} />
-    </div>
-  );
+const Loader: FC<ILoader> = ({ size }) => {
+  return <FontAwesomeIcon spin size={size} icon={faSpinner} />;
 };
 
 export default Loader;
