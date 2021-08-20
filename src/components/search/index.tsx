@@ -21,7 +21,11 @@ const Search: FC = () => {
 
   return (
     <div className="search-container">
-      <SearchHeader isFetching={isFetching} handleSetSearch={handleSetSearch} />
+      <SearchHeader
+        isFetching={isFetching}
+        isFetchingNextPage={isFetchingNextPage}
+        handleSetSearch={handleSetSearch}
+      />
       <SearchResults
         handleLoadMore={handleLoadMore}
         isFetching={isFetchingNextPage}

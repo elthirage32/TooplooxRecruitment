@@ -3,17 +3,21 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-interface IListItem {
+export interface IListItem {
   action: () => void;
   name: string;
   customIcon?: IconProp;
 }
 
 const ListItem: FC<IListItem> = ({ name, action, customIcon }) => (
-  <div className="list__item" onClick={action}>
+  <div data-testid="list-item" className="list__item" onClick={action}>
     <div>
       {customIcon && (
-        <FontAwesomeIcon className="custom_icon" icon={customIcon} />
+        <FontAwesomeIcon
+          data-testid="custom-icon"
+          className="custom_icon"
+          icon={customIcon}
+        />
       )}
       {name}
     </div>

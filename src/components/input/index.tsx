@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-interface IInput {
+export interface IInput {
   value: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
@@ -18,6 +18,7 @@ const Input: FC<IInput> = ({ value, handleChange, placeholder, onEnter }) => {
     <span className="input-container">
       <FontAwesomeIcon icon={faSearch} />
       <input
+        data-testid="input"
         value={value}
         onKeyDown={handleEnterClick}
         onChange={handleChange}

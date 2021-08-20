@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Loader from "~components/loader";
 
-interface ILoadingButton {
+export interface ILoadingButton {
   handleClick: () => void;
   isLoading: boolean;
   label: string;
@@ -17,6 +17,7 @@ const LoadingButton: FC<ILoadingButton> = ({
   <button
     onClick={handleClick}
     disabled={isLoading}
+    data-testid="loading-button"
     className={`btn ${isLoading && "btn--disabled"} ${customClass}`}
   >
     <span>

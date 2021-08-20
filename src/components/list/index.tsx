@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import ListItem from "~components/listItem";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-interface IList {
+export interface IList {
   items: Array<any>;
   emptyListComponent: React.ReactChild;
   customIcon?: IconProp;

@@ -5,9 +5,14 @@ import LoadingButton from "~components/loadingButton";
 interface ISearchHeader {
   handleSetSearch: (searchValue: string) => void;
   isFetching: boolean;
+  isFetchingNextPage: boolean;
 }
 
-const SearchHeader: FC<ISearchHeader> = ({ handleSetSearch, isFetching }) => {
+const SearchHeader: FC<ISearchHeader> = ({
+  handleSetSearch,
+  isFetching,
+  isFetchingNextPage,
+}) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +32,7 @@ const SearchHeader: FC<ISearchHeader> = ({ handleSetSearch, isFetching }) => {
         placeholder="Search github users"
       />
       <LoadingButton
-        isLoading={isFetching}
+        isLoading={isFetching && !isFetchingNextPage}
         handleClick={handleSearchSubmit}
         label="Search"
       />
