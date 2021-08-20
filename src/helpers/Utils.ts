@@ -18,6 +18,5 @@ export const checkIfCanFetchMoreUsers = (
   userResponse?.pages.map((page) => {
     itemsCount = itemsCount + page.items.length;
   });
-  console.log(itemsCount);
   return itemsCount < totalItems;
 };
